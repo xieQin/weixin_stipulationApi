@@ -2,13 +2,23 @@
 
 class StipulationApiAction extends Action{
 
-    public function index() {
-        renderString("index working... ");
+    public function apply() {
+        $mgr = new StipulationCenterFacade();
+        echo $mgr->getApplyByApi();
     }
 
-	public function getbyapi(){
-		$mgr = new StipulationCenterFacade();
-		echo $mgr->getByApi();
-	}
-
+    public function submitApply() {
+        global $q_type,
+        $q_name,
+        $q_mobile,
+        $q_money,
+        $q_mark;
+        $mgr = new StipulationCenterFacade();
+        echo $mgr->submit($q_type,
+        $q_name,
+        $q_mobile,
+        $q_money,
+        $q_mark
+        );
+    }
 }
